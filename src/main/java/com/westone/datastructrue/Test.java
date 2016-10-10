@@ -19,15 +19,14 @@ public class Test
         MyLinkedList<String> list = new MyLinkedList<String>();
         list.add("a");
         list.add("b");
-        list.add("a");
         list.add("c");
         list.add("d");
-        list.add("b");
-        list.add("c");
+        list.add("e");
         // list.deleteDuplication();
         // list.delete(0);
         // list.delete(4);
         String a = list.getLastN2(1);
+        list.reverse1(list.getHead());
         System.out.println(a);
     }
 }

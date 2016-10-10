@@ -293,10 +293,32 @@ public class MyLinkedList<E>
      * 
      * @return
      */
-    public Node invert(Node node)
+    public Node<E> reverse1(Node<E> node)
     {
-        Node<E> next = node.getNext();
-        
-        return null;
+        // head看作是前一结点，head.getNext()是当前结点，reversedHead是反转后新链表的头结点
+        if (node == null || node.getNext() == null)
+        {
+            return node;// 若为空链或者当前结点在尾结点，则直接还回
+        }
+        Node<E> reversedHead = reverse1(node.getNext());// 先反转后续节点head.getNext()
+        node.getNext().setNext(node);// 将当前结点的指针域指向前一结点
+        node.setNext(null);// 前一结点的指针域令为null;
+        return reversedHead;// 反转后新链表的头结点
+    }
+    
+    // 将当前节点下一个节点缓存后更新当前节点
+    public Node<E> reverse2(Node<E> node)
+    {
+        // 当前节点
+        Node<E> cur = node.getNext();
+        // 前一个节点
+        Node<E> pre = node;
+        // 当前节点的下一个节点
+        Node<E> tmp = node.getNext().getNext();
+        Node<E> revert = new Node<E>();
+        while (cur != null)
+        {
+            
+        }
     }
 }
