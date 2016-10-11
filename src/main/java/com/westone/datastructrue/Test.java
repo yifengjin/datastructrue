@@ -25,8 +25,9 @@ public class Test
         // list.deleteDuplication();
         // list.delete(0);
         // list.delete(4);
-        String a = list.getLastN2(1);
-        list.reverse1(list.getHead());
-        System.out.println(a);
+        // String a = list.getLastN2(1);
+        // list.reverse1(list.getHead());
+        // list.reverse2(list.getHead());
+        list.printListReversely(list.getHead());
     }
 }

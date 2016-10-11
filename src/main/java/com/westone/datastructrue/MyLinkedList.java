@@ -307,6 +307,12 @@ public class MyLinkedList<E>
     }
     
     // 将当前节点下一个节点缓存后更新当前节点
+    /**
+     * 链表反转
+     * 
+     * @param node
+     * @return
+     */
     public Node<E> reverse2(Node<E> node)
     {
         // 当前节点
@@ -314,11 +320,24 @@ public class MyLinkedList<E>
         // 前一个节点
         Node<E> pre = node;
         // 当前节点的下一个节点
-        Node<E> tmp = node.getNext().getNext();
-        Node<E> revert = new Node<E>();
+        Node<E> tmp;
         while (cur != null)
         {
-            
+            tmp = cur.getNext();
+            cur.setNext(pre);
+            pre = cur;
+            cur = tmp;
+        }
+        node.setNext(null);
+        return pre;
+    }
+    
+    public void printListReversely(Node<E> node)
+    {
+        if (node != null)
+        {
+            printListReversely(node.getNext());
+            System.out.println(node.getItem());
         }
     }
 }
