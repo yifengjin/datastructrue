@@ -5,7 +5,7 @@
  * 创建人：wang.li
  * 创建时间：2016年10月8日
  */
-package com.westone.datastructrue;
+package com.westone.datastructrue.list;
 
 /**
  * @author wang.li
