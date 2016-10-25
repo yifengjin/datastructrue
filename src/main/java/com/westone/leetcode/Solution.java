@@ -8,6 +8,8 @@
 package com.westone.leetcode;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -220,18 +222,55 @@ public class Solution
         return dummyHead.next;
     }
     
+    // Given a string, find the length of the longest substring without repeating characters.
+    //
+    // Examples:
+    //
+    // Given "abcabcbb", the answer is "abc", which the length is 3.
+    //
+    // Given "bbbbb", the answer is "b", with the length of 1.
+    //
+    // Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a
+    // subsequence and not a substring.
+    public int lengthOfLongestSubstring(String s)
+    {
+        List<Character> list = new LinkedList<Character>();
+        // 用于存储子串长度
+        int lent = 0;
+        for (int i = 0; i < s.length(); i++)
+        {
+            Character current = s.charAt(i);
+            // 如果下一个元素是重复元素
+            if (list.contains(current))
+            {
+                // 删除重复元素和它前面的元素
+                int repeatIndex = list.indexOf(current);
+                for (int j = repeatIndex; j >= 0; j--)
+                {
+                    list.remove(j);
+                }
+            }
+            // 将当前元素添加到list末尾
+            list.add(current);
+            int listLenth = list.size();
+            // if (listLenth > lent)
+            // {
+            lent = listLenth > lent ? listLenth : lent;
+            // }
+        }
+        return lent;
+    }
+    
     public static void main(String[] args)
     {
-        ListNode l1 = new ListNode(5);
-        // l1.next = new ListNode(4);
-        // l1.next.next = new ListNode(3);
-        //
-        ListNode l2 = new ListNode(5);
-        // l2.next = new ListNode(6);
-        // l2.next.next = new ListNode(4);
-        
         Solution solution = new Solution();
-        ListNode node = solution.addTwoNumbersIm(l1, l2);
-        System.out.println(node);
+        String test1 = "abcabcbb";
+        String test2 = "bbbbb";
+        String test3 = "pwwkew";
+        String test4 = "a";
+        solution.lengthOfLongestSubstring(test1);
+        solution.lengthOfLongestSubstring(test2);
+        solution.lengthOfLongestSubstring(test3);
+        solution.lengthOfLongestSubstring(test4);
     }
 }
